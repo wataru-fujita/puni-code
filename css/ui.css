@@ -1,0 +1,224 @@
+/* ==========================================================
+   ぷにコード - Dress-up, Modal, Animations, Responsive
+   ========================================================== */
+
+/* Dress-Up Screen */
+.dressup-screen{background:radial-gradient(ellipse at 50% 40%,rgba(232,222,255,0.5) 0%,transparent 60%)}
+.dressup-content{flex:1;display:flex;flex-direction:column;align-items:center;gap:20px;padding:20px 16px;width:100%;max-width:400px;overflow-y:auto}
+.dressup-preview{width:140px;height:130px;cursor:pointer;position:relative}
+.dressup-section{width:100%}
+.dressup-section-title{font-size:0.85rem;font-weight:700;color:var(--text-secondary);margin-bottom:8px;padding-left:4px}
+.color-palette{display:flex;gap:10px;justify-content:center;flex-wrap:wrap}
+.color-swatch{width:44px;height:44px;border-radius:50%;border:3px solid transparent;cursor:pointer;transition:transform var(--transition-fast),border-color var(--transition-fast);box-shadow:0 2px 8px rgba(0,0,0,0.12)}
+.color-swatch:active{transform:scale(0.9)}
+.color-swatch.selected{border-color:var(--text-primary);transform:scale(1.1)}
+.color-swatch[data-color="pink"]{background:var(--puni-pink)}
+.color-swatch[data-color="lavender"]{background:var(--puni-lavender)}
+.color-swatch[data-color="mint"]{background:var(--puni-mint)}
+.color-swatch[data-color="peach"]{background:var(--puni-peach)}
+.color-swatch[data-color="sky"]{background:var(--puni-sky)}
+.color-swatch[data-color="lemon"]{background:var(--puni-lemon)}
+.accessory-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.accessory-btn{display:flex;flex-direction:column;align-items:center;gap:4px;padding:12px 8px;background:var(--card-bg);border:2px solid var(--card-border);border-radius:var(--radius-md);cursor:pointer;font-family:inherit;font-size:0.8rem;font-weight:700;color:var(--text-primary);transition:transform var(--transition-fast),border-color var(--transition-fast),background var(--transition-fast)}
+.accessory-btn:active{transform:scale(0.93)}
+.accessory-btn.selected{border-color:var(--pink);background:rgba(255,143,171,0.15)}
+.accessory-btn.locked{opacity:0.4;cursor:not-allowed}
+.accessory-icon{font-size:1.5rem}
+
+/* Modal */
+.modal-overlay{position:fixed;inset:0;background:rgba(74,63,107,0.5);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);display:flex;align-items:center;justify-content:center;z-index:1000;opacity:0;pointer-events:none;transition:opacity 0.3s ease;padding:20px}
+.modal-overlay.active{opacity:1;pointer-events:auto}
+.modal-content{background:linear-gradient(135deg,#FFF5F8,#F5F0FF);border-radius:var(--radius-xl);padding:32px 24px;text-align:center;max-width:320px;width:100%;box-shadow:var(--shadow-strong);transform:scale(0.8);transition:transform 0.5s var(--spring)}
+.modal-overlay.active .modal-content{transform:scale(1)}
+.modal-title{font-size:2rem;font-weight:900;margin-bottom:8px;animation:celebrateText 0.6s ease-out 0.3s both}
+.modal-stars{font-size:2rem;margin:12px 0;letter-spacing:4px}
+.modal-star{display:inline-block;animation:starPop 0.4s var(--spring) both}
+.modal-star:nth-child(1){animation-delay:0.5s}
+.modal-star:nth-child(2){animation-delay:0.7s}
+.modal-star:nth-child(3){animation-delay:0.9s}
+.modal-message{font-size:0.9rem;color:var(--text-secondary);margin-bottom:20px;font-weight:700}
+.modal-buttons{display:flex;flex-direction:column;gap:10px}
+.modal-buttons .btn{width:100%}
+
+/* Animations */
+@keyframes titleFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+@keyframes gradientShift{0%,100%{background-position:0% 50%}50%{background-position:100% 50%}}
+@keyframes floatDeco{0%,100%{transform:translateY(0) rotate(0deg);opacity:0.6}25%{transform:translateY(-15px) rotate(5deg);opacity:0.8}75%{transform:translateY(5px) rotate(-3deg);opacity:0.5}}
+@keyframes puniBreathe{0%,100%{transform:scaleY(1) scaleX(1)}50%{transform:scaleY(0.96) scaleX(1.04)}}
+@keyframes puniBlinkLoop{0%,42%,46%,100%{transform:scaleY(1)}44%{transform:scaleY(0.05)}}
+@keyframes puniSquish{0%{transform:scale(1)}20%{transform:scaleY(0.7) scaleX(1.35)}50%{transform:scaleY(1.15) scaleX(0.88)}70%{transform:scaleY(0.95) scaleX(1.05)}100%{transform:scaleY(1) scaleX(1)}}
+@keyframes puniMove{0%{transform:scaleY(0.75) scaleX(1.3)}40%{transform:scaleY(1.2) scaleX(0.85)}70%{transform:scaleY(0.93) scaleX(1.07)}100%{transform:scaleY(1) scaleX(1)}}
+@keyframes puniHappy{0%,100%{transform:translateY(0) scaleY(1) scaleX(1)}15%{transform:translateY(-20%) scaleY(1.15) scaleX(0.88)}30%{transform:translateY(0) scaleY(0.85) scaleX(1.15)}45%{transform:translateY(-12%) scaleY(1.1) scaleX(0.9)}60%{transform:translateY(0) scaleY(0.92) scaleX(1.08)}75%{transform:translateY(-5%) scaleY(1.05) scaleX(0.95)}90%{transform:translateY(0) scaleY(0.98) scaleX(1.02)}}
+@keyframes blockPop{0%{transform:scale(0);opacity:0}60%{transform:scale(1.15)}100%{transform:scale(1);opacity:1}}
+@keyframes blockExecute{0%,100%{transform:scale(1)}50%{transform:scale(1.15)}}
+@keyframes goalPulse{0%,100%{box-shadow:0 0 8px rgba(255,215,0,0.3)}50%{box-shadow:0 0 20px rgba(255,215,0,0.6)}}
+@keyframes goalSpin{0%{transform:rotate(0deg)}100%{transform:rotate(360deg)}}
+@keyframes celebrateText{0%{transform:scale(0.3) rotate(-10deg);opacity:0}60%{transform:scale(1.2) rotate(3deg)}100%{transform:scale(1) rotate(0deg);opacity:1}}
+@keyframes starPop{0%{transform:scale(0) rotate(-180deg);opacity:0}60%{transform:scale(1.3) rotate(15deg)}100%{transform:scale(1) rotate(0deg);opacity:1}}
+@keyframes hintBounce{0%,100%{transform:translateY(0)}50%{transform:translateY(-3px)}}
+@keyframes titleBounce{0%,100%{transform:translateY(0) scaleY(1) scaleX(1)}30%{transform:translateY(-15px) scaleY(1.1) scaleX(0.92)}50%{transform:translateY(0) scaleY(0.88) scaleX(1.12)}70%{transform:translateY(-5px) scaleY(1.04) scaleX(0.97)}}
+@keyframes errorShake{0%,100%{transform:translateX(0)}20%{transform:translateX(-6px)}40%{transform:translateX(6px)}60%{transform:translateX(-4px)}80%{transform:translateX(4px)}}
+
+.squish{animation:puniSquish 0.6s var(--spring) forwards!important}
+.move-squish .puni-body{animation:puniMove 0.5s var(--spring) forwards!important}
+.happy-bounce .puni-body{animation:puniHappy 1s ease-in-out!important}
+.title-character .puni-body{animation:titleBounce 2s ease-in-out infinite!important}
+.error-shake{animation:errorShake 0.4s ease}
+
+.btn-reset-data{position:absolute;bottom:20px;left:50%;transform:translateX(-50%);background:none;border:none;color:rgba(255,255,255,0.4);font-size:0.75rem;font-weight:700;text-decoration:underline;cursor:pointer;padding:8px;transition:color 0.2s}
+.btn-reset-data:hover{color:rgba(255,255,255,0.8)}
+
+/* Profile Select Screen */
+.profile-screen {
+   background: radial-gradient(ellipse at 50% 30%, rgba(232, 222, 255, 0.4) 0%, transparent 60%)
+}
+
+.profile-list {
+   flex: 1;
+   display: flex;
+   flex-direction: column;
+   gap: 12px;
+   padding: 20px 24px;
+   max-width: 600px;
+   width: 100%;
+   margin: 0 auto;
+   overflow-y: auto
+}
+
+.profile-slot {
+   display: flex;
+   align-items: center;
+   gap: 16px;
+   padding: 16px 20px;
+   background: var(--card-bg);
+   border: 2px solid var(--card-border);
+   border-radius: var(--radius-lg);
+   transition: transform 0.2s ease, box-shadow 0.2s ease
+}
+
+.profile-slot:hover {
+   transform: translateY(-2px);
+   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08)
+}
+
+.profile-slot.has-data {
+   border-color: rgba(74, 212, 160, 0.4)
+}
+
+.profile-slot.guest {
+   border-color: rgba(200, 200, 200, 0.3);
+   background: rgba(255, 255, 255, 0.3)
+}
+
+.slot-icon {
+   flex-shrink: 0;
+   width: 65px;
+   height: 60px;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   background: rgba(255, 255, 255, 0.4);
+   border-radius: var(--radius-md);
+   position: relative;
+   overflow: visible; /* キャラクターのアクセサリーがはみ出しても良いように */
+}
+
+.slot-icon .puni-chan {
+   width: 100%;
+   height: 100%;
+   transform: scale(0.65); /* スロット用に小さく表示 */
+}
+
+.slot-info {
+   flex: 1
+}
+
+.slot-name {
+   font-size: 1rem;
+   font-weight: 900;
+   color: var(--text-primary);
+   margin-bottom: 4px
+}
+
+.slot-stats {
+   font-size: 0.8rem;
+   font-weight: 700;
+   color: var(--text-secondary)
+}
+
+.slot-actions {
+   display: flex;
+   gap: 8px
+}
+
+.slot-btn {
+   padding: 8px 16px;
+   border-radius: var(--radius-full);
+   border: none;
+   font-family: inherit;
+   font-size: 0.85rem;
+   font-weight: 700;
+   cursor: pointer;
+   transition: transform 0.2s ease, filter 0.2s ease
+}
+
+.slot-btn:active {
+   transform: scale(0.92)
+}
+
+.slot-continue {
+   background: linear-gradient(135deg, var(--mint), var(--mint-dark));
+   color: var(--text-white);
+   box-shadow: 0 2px 8px rgba(74, 212, 160, 0.3)
+}
+
+.slot-dressup-mini {
+   background: linear-gradient(135deg, var(--lavender), var(--lavender-dark));
+   color: var(--text-white);
+   box-shadow: 0 2px 8px rgba(167, 139, 250, 0.3)
+}
+
+.slot-new {
+   background: linear-gradient(135deg, var(--pink), var(--coral));
+   color: var(--text-white);
+   box-shadow: 0 2px 8px rgba(255, 143, 171, 0.3)
+}
+
+.slot-delete {
+   background: rgba(200, 200, 200, 0.3);
+   color: var(--text-secondary);
+   font-size: 0.75rem
+}
+
+.slot-delete:hover {
+   background: rgba(255, 100, 100, 0.2);
+   color: #e55
+}
+
+.slot-guest {
+   background: linear-gradient(135deg, var(--lavender), var(--lavender-dark));
+   color: var(--text-white);
+   box-shadow: 0 2px 8px rgba(174, 157, 255, 0.3)
+}
+
+/* Responsive */
+@media(max-height:650px){
+  .game-content{gap:6px;padding:4px 10px}
+  .grid-container{width:min(75vw,300px)}
+  .palette-block{padding:10px 14px;font-size:0.82rem}
+  .code-area{min-height:44px;padding:6px 10px}
+  .hint-bubble{padding:6px 12px;font-size:0.75rem}
+}
+@media(min-width:768px){
+  .title-logo h1{font-size:3.5rem}
+  .title-character{width:180px;height:168px}
+  .grid-container{width:min(80vw,440px)}
+  .stage-grid{grid-template-columns:repeat(4,1fr)}
+}
+@media(max-height:500px) and (orientation:landscape){
+  .game-screen .game-content{flex-direction:row;flex-wrap:wrap;justify-content:center}
+  .grid-container{width:min(50vh,280px)}
+}
+@supports(padding:env(safe-area-inset-bottom)){
+  .game-actions{padding-bottom:calc(8px + env(safe-area-inset-bottom))}
+}

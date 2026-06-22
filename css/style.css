@@ -1,0 +1,318 @@
+/* ==========================================================
+   ぷにコード - Design System & Base Styles
+   ========================================================== */
+
+:root {
+  --pink-light: #FFD1DC;
+  --pink: #FF8FAB;
+  --pink-dark: #FF6B8A;
+  --lavender-light: #E8DEFF;
+  --lavender: #C9B1FF;
+  --lavender-dark: #A78BFA;
+  --mint-light: #BFFFF0;
+  --mint: #7DFFCB;
+  --mint-dark: #4AD4A0;
+  --peach-light: #FFE4CC;
+  --peach: #FFCBA4;
+  --sky-light: #C5E8FF;
+  --sky: #87CEEB;
+  --lemon: #FFF59D;
+  --coral: #FF7F7F;
+  --bg-1: #FFF0F5;
+  --bg-2: #F0E6FF;
+  --bg-3: #E6F7FF;
+  --text-primary: #4A3F6B;
+  --text-secondary: #8B7FB5;
+  --text-white: #FFFFFF;
+  --card-bg: rgba(255,255,255,0.75);
+  --card-border: rgba(255,255,255,0.6);
+  --shadow-soft: 0 4px 20px rgba(100,60,120,0.12);
+  --shadow-strong: 0 8px 32px rgba(100,60,120,0.2);
+  --glass-bg: rgba(255,255,255,0.45);
+  --glass-border: rgba(255,255,255,0.6);
+  --block-forward: #FF8FAB;
+  --block-forward-dark: #E8709A;
+  --block-right: #87CEEB;
+  --block-right-dark: #6BB5D6;
+  --block-left: #C9B1FF;
+  --block-left-dark: #A78BFA;
+  --grid-grass: #C8E6C9;
+  --grid-grass-alt: #B9DEB8;
+  --puni-pink: #FF8FAB;
+  --puni-pink-light: #FFD1DC;
+  --puni-lavender: #C9B1FF;
+  --puni-lavender-light: #E8DEFF;
+  --puni-mint: #7DFFCB;
+  --puni-mint-light: #BFFFF0;
+  --puni-peach: #FFCBA4;
+  --puni-peach-light: #FFE4CC;
+  --puni-sky: #87CEEB;
+  --puni-sky-light: #C5E8FF;
+  --puni-lemon: #FFF59D;
+  --puni-lemon-light: #FFFDE7;
+  --header-height: 52px;
+  --radius-sm: 8px;
+  --radius-md: 16px;
+  --radius-lg: 24px;
+  --radius-xl: 32px;
+  --radius-full: 9999px;
+  --transition-fast: 0.15s ease;
+  --transition-normal: 0.3s ease;
+  --spring: cubic-bezier(0.34,1.56,0.64,1);
+}
+
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent;touch-action:manipulation}
+html,body{height:100%;overflow:hidden;background:linear-gradient(135deg,var(--bg-1) 0%,var(--bg-2) 50%,var(--bg-3) 100%);font-family:'Zen Maru Gothic',sans-serif;color:var(--text-primary);-webkit-font-smoothing:antialiased;user-select:none;-webkit-user-select:none}
+#app{width:100%;height:100dvh;height:100vh;position:relative;overflow:hidden;display:flex;flex-direction:column}
+#particles-canvas{position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:9999}
+
+/* Screens */
+.screen{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;opacity:0;transform:translateY(10px);transition:opacity 0.4s ease,transform 0.4s ease;pointer-events:none;overflow-y:auto;overflow-x:hidden}
+.screen.active{opacity:1;transform:translateY(0);pointer-events:auto}
+
+/* Buttons */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:14px 32px;border:none;border-radius:var(--radius-full);font-family:inherit;font-size:1.1rem;font-weight:700;cursor:pointer;transition:transform var(--transition-fast),box-shadow var(--transition-fast);position:relative;overflow:hidden;outline:none}
+.btn::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(255,255,255,0.3) 0%,transparent 50%);border-radius:inherit;pointer-events:none}
+.btn:active{transform:scale(0.93)}
+.btn-primary{background:linear-gradient(135deg,var(--pink),var(--pink-dark));color:var(--text-white);box-shadow:0 4px 16px rgba(255,107,138,0.4)}
+.btn-secondary{background:linear-gradient(135deg,var(--lavender),var(--lavender-dark));color:var(--text-white);box-shadow:0 4px 16px rgba(167,139,250,0.4)}
+.btn-accent{background:linear-gradient(135deg,var(--mint),var(--mint-dark));color:var(--text-primary);box-shadow:0 4px 16px rgba(74,212,160,0.4)}
+.btn-small{padding:10px 20px;font-size:0.9rem}
+.btn-icon{width:44px;height:44px;padding:0;border-radius:50%;font-size:1.2rem}
+
+/* Header */
+.header{width:100%;height:var(--header-height);display:flex;align-items:center;justify-content:space-between;padding:0 16px;flex-shrink:0;background:var(--glass-bg);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-bottom:1px solid var(--glass-border);z-index:10}
+.header-title{font-size:1rem;font-weight:700}
+.header-back{background:none;border:none;font-size:1.4rem;cursor:pointer;padding:8px;color:var(--text-primary);font-family:inherit;display:flex;align-items:center;gap:4px}
+.header-back span, .header-btn span{font-size:0.85rem;font-weight:700}
+.header-btn{background:none;border:none;font-size:1.4rem;cursor:pointer;padding:8px;color:var(--text-primary);font-family:inherit;display:flex;align-items:center;gap:4px}
+
+/* Card */
+.card{background:var(--card-bg);backdrop-filter:blur(12px);border:1px solid var(--card-border);border-radius:var(--radius-lg);box-shadow:var(--shadow-soft);padding:20px}
+
+/* Title Screen */
+.title-screen{justify-content:center;gap:20px;padding:20px;background:radial-gradient(ellipse at 50% 30%,rgba(255,209,220,0.5) 0%,transparent 60%)}
+.title-logo{text-align:center;animation:titleFloat 3s ease-in-out infinite}
+.title-logo h1{font-size:clamp(2.2rem,10vw,3.5rem);font-weight:900;background:linear-gradient(135deg,var(--pink-dark),var(--lavender-dark),var(--pink));background-size:200% 200%;-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;animation:gradientShift 4s ease-in-out infinite;filter:drop-shadow(0 2px 4px rgba(167,139,250,0.3));line-height:1.2}
+.title-subtitle{font-size:clamp(0.75rem,3vw,1rem);color:var(--text-secondary);font-weight:700;margin-top:4px}
+.title-character{position:relative;width:140px;height:130px;margin:10px auto;cursor:pointer}
+.title-buttons{display:flex;flex-direction:column;gap:12px;align-items:center;width:100%;max-width:280px}
+.title-buttons .btn{width:100%}
+.title-deco{position:absolute;font-size:1.5rem;animation:floatDeco 6s ease-in-out infinite;opacity:0.6;pointer-events:none}
+
+/* Stage Select */
+.stage-screen{background:radial-gradient(ellipse at 50% 20%,rgba(200,230,201,0.4) 0%,transparent 60%)}
+.world-title{text-align:center;padding:20px 16px 8px;font-size:1.3rem;font-weight:900}
+.world-subtitle{font-size:0.8rem;color:var(--text-secondary);font-weight:400;margin-top:2px}
+.stage-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(85px, 1fr));
+  gap: 12px;
+  padding: 16px 20px;
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto;
+}
+.stage-btn{display:flex;flex-direction:column;align-items:center;gap:4px;padding:16px 12px;background:var(--card-bg);backdrop-filter:blur(8px);border:2px solid var(--card-border);border-radius:var(--radius-lg);box-shadow:var(--shadow-soft);cursor:pointer;transition:transform var(--transition-fast),box-shadow var(--transition-fast),border-color var(--transition-fast);font-family:inherit;position:relative;overflow:hidden}
+.stage-btn::before{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(255,255,255,0.4) 0%,transparent 50%);pointer-events:none}
+.stage-btn:active{transform:scale(0.95)}
+.stage-btn.current{border-color:var(--pink);box-shadow:0 4px 20px rgba(255,143,171,0.3)}
+.stage-btn.locked{opacity:0.45;cursor:not-allowed;filter:grayscale(0.3)}
+.stage-btn.locked:active{transform:none}
+.stage-btn.cleared{border-color:var(--mint)}
+.stage-number{font-size:0.75rem;font-weight:700;color:var(--text-secondary)}
+.stage-name{font-size:0.95rem;font-weight:700}
+.stage-status{font-size:1.1rem;margin-top:2px}
+
+/* ダークモード ハック解除済みステージ */
+.stage-btn.hacked {
+  border-color: rgba(0, 243, 255, 0.5);
+  box-shadow: 0 0 12px rgba(0, 243, 255, 0.2), inset 0 0 20px rgba(114, 9, 183, 0.1);
+  animation: hackedPulse 3s ease-in-out infinite;
+}
+.stage-btn.hacked .stage-number::before {
+  content: '🔓 ';
+}
+@keyframes hackedPulse {
+  0%, 100% { border-color: rgba(0, 243, 255, 0.4); box-shadow: 0 0 8px rgba(0, 243, 255, 0.15); }
+  50% { border-color: rgba(255, 0, 127, 0.5); box-shadow: 0 0 16px rgba(255, 0, 127, 0.25); }
+}
+
+/* ==========================================================
+   ダークモード (裏面) & 特殊エフェクト
+   ========================================================== */
+
+body.dark-mode {
+  --pink-light: #2d1420;
+  --pink: #d90429;
+  --pink-dark: #ef233c;
+  --lavender-light: #16082c;
+  --lavender: #7209b7;
+  --lavender-dark: #3f076f;
+  --mint-light: #062f22;
+  --mint: #06d6a0;
+  --mint-dark: #00b4d8;
+  --peach-light: #2b1704;
+  --peach: #f77f00;
+  --sky-light: #05263a;
+  --sky: #0077b6;
+  --lemon: #fcbf49;
+  --coral: #ff477e;
+  --bg-1: #07020d;
+  --bg-2: #0d0614;
+  --bg-3: #03001e;
+  --text-primary: #e0aaff;
+  --text-secondary: #c77dff;
+  --card-bg: rgba(15, 8, 25, 0.85);
+  --card-border: rgba(114, 9, 183, 0.4);
+  --shadow-soft: 0 4px 20px rgba(114, 9, 183, 0.25);
+  --shadow-strong: 0 8px 32px rgba(114, 9, 183, 0.5);
+  --glass-bg: rgba(13, 6, 20, 0.65);
+  --glass-border: rgba(114, 9, 183, 0.4);
+  --grid-grass: #1b1424;
+  --grid-grass-alt: #120c1a;
+}
+
+/* タイトルロゴのグリッチエフェクト */
+body.dark-mode .title-logo h1 {
+  animation: glitch 1.5s infinite alternate;
+  background: linear-gradient(135deg, #ff007f, #7209b7, #00f3ff);
+  background-size: 200% 200%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-shadow: 0 0 8px rgba(255, 0, 127, 0.6);
+}
+
+@keyframes glitch {
+  0% {
+    text-shadow: -2px 0 #ff007f, 2px 0 #00f3ff;
+    transform: skew(0deg);
+  }
+  20% {
+    text-shadow: -2px 0 #ff007f, 2px 0 #00f3ff;
+    transform: skew(0deg);
+  }
+  21% {
+    text-shadow: -4px 0 #ff007f, 4px 0 #00f3ff;
+    transform: skew(3deg);
+  }
+  25% {
+    text-shadow: -2px 0 #ff007f, 2px 0 #00f3ff;
+    transform: skew(0deg);
+  }
+  60% {
+    text-shadow: -2px 0 #ff007f, 2px 0 #00f3ff;
+    transform: skew(0deg);
+  }
+  61% {
+    text-shadow: -3px 0 #ff007f, 3px 0 #00f3ff;
+    transform: skew(-2deg);
+  }
+  65% {
+    text-shadow: -2px 0 #ff007f, 2px 0 #00f3ff;
+    transform: skew(0deg);
+  }
+  100% {
+    text-shadow: -1px 0 #ff007f, 1px 0 #00f3ff;
+    transform: skew(0deg);
+  }
+}
+
+/* デコレーション絵文字のホバー＆アクティブ */
+.title-deco {
+  pointer-events: auto !important;
+  cursor: pointer;
+  transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.2s;
+}
+.title-deco:hover {
+  transform: scale(1.3) !important;
+  opacity: 1 !important;
+  filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.6));
+}
+body.dark-mode .title-deco:hover {
+  filter: drop-shadow(0 0 8px #ff007f);
+}
+
+/* 画面揺れグリッチ */
+.glitch-shake {
+  animation: glitchShake 0.4s ease infinite;
+}
+
+@keyframes glitchShake {
+  0% { transform: translate(0, 0) skew(0deg); }
+  10% { transform: translate(-2px, 2px) skew(-1deg); }
+  20% { transform: translate(2px, -1px) skew(1deg); }
+  30% { transform: translate(-1px, -2px) skew(0deg); }
+  40% { transform: translate(1px, 2px) skew(1deg); }
+  50% { transform: translate(-2px, 1px) skew(-1deg); }
+  60% { transform: translate(2px, -2px) skew(0deg); }
+  70% { transform: translate(-1px, 1px) skew(1deg); }
+  80% { transform: translate(1px, -1px) skew(-1deg); }
+  90% { transform: translate(-2px, -2px) skew(0deg); }
+  100% { transform: translate(0, 0) skew(0deg); }
+}
+
+/* フラッシュ用オーバーレイ */
+.flash-overlay {
+  position: fixed;
+  inset: 0;
+  background: white;
+  z-index: 10000;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+.flash-overlay.active {
+  opacity: 1;
+  transition: none;
+}
+body.dark-mode .flash-overlay {
+  background: #07020d;
+}
+
+/* 隠しアイコン専用の誘引演出 */
+.secret-trigger {
+  opacity: 0.95 !important;
+  filter: drop-shadow(0 0 4px rgba(255, 255, 255, 0.4));
+  animation: floatDeco 6s ease-in-out infinite, secretPulse 3s infinite alternate !important;
+}
+
+body.dark-mode .secret-trigger {
+  filter: drop-shadow(0 0 6px #ff007f);
+  animation: floatDeco 6s ease-in-out infinite, secretPulseDark 2s infinite alternate !important;
+}
+
+@keyframes secretPulse {
+  0%, 85% {
+    transform: scale(1);
+    filter: drop-shadow(0 0 2px rgba(255, 255, 255, 0.4));
+  }
+  92% {
+    transform: scale(1.3);
+    filter: drop-shadow(0 0 14px rgba(255, 200, 0, 0.9));
+  }
+  100% {
+    transform: scale(1.15);
+    filter: drop-shadow(0 0 8px rgba(255, 200, 0, 0.6));
+  }
+}
+
+@keyframes secretPulseDark {
+  0%, 80% {
+    transform: scale(1) rotate(0deg);
+    filter: drop-shadow(0 0 4px #ff007f);
+  }
+  87% {
+    transform: scale(1.35) rotate(6deg);
+    filter: drop-shadow(0 0 16px #00f3ff) saturate(1.6);
+  }
+  93% {
+    transform: scale(1.35) rotate(-6deg);
+    filter: drop-shadow(0 0 16px #ff007f) saturate(1.6);
+  }
+  100% {
+    transform: scale(1.15) rotate(0deg);
+    filter: drop-shadow(0 0 10px #ff007f);
+  }
+}
