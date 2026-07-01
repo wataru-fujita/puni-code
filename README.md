@@ -27,7 +27,7 @@
 
 開発の詳しい経緯は、noteの記事に書きました。よければ読んでみてください。
 
-📝 **[AIと一緒に「push」した夜、娘たちは少し先へ進んでいた｜河豚田](https://note.com/wataru_fujita)**
+📝 **[AIと一緒に「push」した夜、娘たちは少し先へ進んでいた｜河豚田](https://note.com/fujitagoikka/n/n1b7ed160d877)**
 
 ---
 
@@ -39,7 +39,7 @@
 *   「ここがわかりにくい」
 *   「ここで動きがおかしい（バグ報告）」
 
-など、どんな小さな声でも大歓迎です。GitHubの **[Issues](https://github.com/wataru-fujita/puni-code/issues)** や、noteの記事、SNS等で気軽に声をかけてもらえると、次の `push` の大きな励みになります。
+など、どんな小さな声でも大歓迎です。GitHubの **[Issues](https://github.com/wataru-fujita/puni-code/issues)** や、[noteの記事](https://note.com/fujitagoikka/n/n1b7ed160d877)、SNS等で気軽に声をかけてもらえると、次の `push` の大きな励みになります。
 
 ---
 
